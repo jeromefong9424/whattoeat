@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Text, View, Image, StyleSheet, Button } from 'react-native';
 import Constants from 'expo-constants';
+import Services from './services/services';
 
 export default class App extends React.Component {
   constructor() {
@@ -17,6 +18,13 @@ export default class App extends React.Component {
     return Math.floor(Math.random() * inputLength);
   };
 
+  handleClick1 = () => {
+    var restaurants = [];
+    Services.getNearbyRestaurants().then(data => {
+      restaurants = data;
+      console.log(restaurants);
+    });
+  };
   getRestaurantDetails = () => {
     fetch(
       'https://developers.zomato.com/api/v2.1/restaurant?res_id=' +
