@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import Constants from 'expo-constants';
+import Services from './services/services';
 
 export default class App extends React.Component {
   constructor() {
@@ -11,6 +12,14 @@ export default class App extends React.Component {
     };
   }
 
+  handleClick1 = () => {
+    var restaurants = [];
+    Services.getNearbyRestaurants().then(data => {
+      restaurants = data;
+      console.log(restaurants);
+    });
+  };
+  
   handleClick = () => {
 
     let longitude = 103.8198;
